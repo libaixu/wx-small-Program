@@ -1,0 +1,8 @@
+<!--wxml是页面骨架文件  -->
+<view class='container'>
+  <image class='user-avatar' src='/images/avatar.png'></image>
+  <text class='user-name'>Hello</text>
+  <view class='moto-container'>
+    <text class='moto'>开启我的小程序</text>
+  </view>
+</view>
