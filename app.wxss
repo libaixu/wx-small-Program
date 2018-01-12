@@ -1,3 +1,4 @@
-text{
+text {
   font-family: MicroSoft 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 24rpx;
 }

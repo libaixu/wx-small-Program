@@ -3,6 +3,6 @@
   <image class='user-avatar' src='/images/avatar.png'></image>
   <text class='user-name'>Hello</text>
   <view class='moto-container'>
-    <text class='moto'>开启我的小程序</text>
+    <text class='moto' bindtap='onTap'>开启我的小程序</text>
   </view>
 </view>

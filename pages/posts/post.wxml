@@ -1,3 +1,4 @@
+<import src="posts-item/post-item-template.wxml" />
 <view>
   <swiper indicator-dots="true" autoplay="ture" indicator-active-color="rgba(246,248,249,.7)" circular="true">
     <swiper-item>
@@ -10,19 +11,9 @@
       <image src='/images/iqiyi.png'></image>
     </swiper-item>
   </swiper>
-  <view class='post_container'>
-    <view class='post_autor_date'>
-      <image class='post_author_avator' src='/images/avatar/1.png'></image>
-      <text class='post_date'>nov 25 16</text>
+  <block wx:for="{{postList}}" wx:key="unique" wx:for-item="item">
+    <view catchtap="onPostTap" data-postId='{{item.postId}}'>
+      <template is="post-item" data="{{...item}}" />
     </view>
-    <text class='post_title'> 正是虾肥蟹壮时</text>
-    <image class='post_image' src='/images/post/crab.png'></image>
-    <text class='post_content'>演讲者拿着事先写好的演讲稿，走上讲台，逐字逐句地向听众宣读一遍。其内容经过慎重考虑，语言经过反复推敲，结构经过精心安排，话讲得郑重。它比较适合</text>
-    <view class='post_like'>
-      <image class='post_like_image' src='/images/icon/chat.png'></image>
-      <text class='post_like_content'>92</text>
-      <image class='post_like_image' src='/images/icon/view.png'></image>
-      <text class='post_like_content'>65</text>
-    </view>
-  </view>
+  </block>
 </view>
