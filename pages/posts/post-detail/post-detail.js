@@ -1,4 +1,6 @@
 var postsData = require('../../../data/posts-data.js');
+var app = getApp();
+
 Page({
 
   /**
@@ -29,6 +31,28 @@ Page({
       postsCollected[postId] = false;
       wx.setStorageSync('posts_collected', postsCollected)
     }
+    // 监听全局变量
+    if (app.globalData.g_isPlayingMusic && app.globalData.g_currentMusicPostId === this.data.currentPostId) {
+      this.setData({
+        isPlayingMusic: true
+      });
+    }
+    // 总控开关控制音乐播放图标
+    var that = this;
+    wx.onBackgroundAudioPlay(() => {
+      that.setData({
+        isPlayingMusic: true
+      });
+      app.globalData.g_isPlayingMusic = true;
+      app.globalData.g_currentMusicPostId = this.data.currentPostId;
+    });
+    wx.onBackgroundAudioPause(() => {
+      that.setData({
+        isPlayingMusic: false
+      });
+      app.globalData.g_isPlayingMusic = false;
+      app.globalData.g_currentMusicPostId = null;
+    });
 
   },
   onCollectionTap: function (options) {
