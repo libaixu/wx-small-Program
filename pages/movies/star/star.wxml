@@ -1,2 +1,17 @@
 <!--pages/movies/star/star.wxml-->
-<text>pages/movies/star/star.wxml</text>
+<template name="starTemplate">
+  <view class='star-container'>
+    <view class='star'>
+      <block wx:for="{{stars}}" wx:for-item="item">
+        <image wx:if="{{item==1}}" src="/images/icon/star.png"></image>
+        <image wx:else src="/images/icon/none-star.png"></image>
+      </block>
+      <!-- <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image>
+      <image src="/images/icon/star.png"></image> -->
+    </view>
+    <text class='star-score'>{{score}}</text>
+  </view>
+</template>

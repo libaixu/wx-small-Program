@@ -1,4 +1,14 @@
 <!--pages/movies/movie.wxml-->
+<import src="movie-list/movie-list.wxml" />
+
 <view class='container'>
-2222
+  <view class='movies-template'>
+    <template is="movieList" data="{{...intheaters}}" />
+  </view>
+  <view class='movies-template'>
+    <template is="movieList" data="{{...comingsoon}}" />
+  </view>
+  <view class='movies-template'>
+    <template is="movieList" data="{{...top250}}" />
+  </view>
 </view>
