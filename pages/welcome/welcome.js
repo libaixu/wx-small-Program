@@ -3,7 +3,7 @@ Page({
     // wx.navigateTo({
     //   url: '../posts/post',
     // })
-    wx.navigateTo({
+    wx.switchTab({
       url: '../posts/post'
     })
   }
