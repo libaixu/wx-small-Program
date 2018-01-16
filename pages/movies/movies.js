@@ -8,7 +8,9 @@ Page({
   data: {
     intheaters: {},
     comingsoon: {},
-    top250: {}
+    top250: {},
+    containerShow: true,
+    searchPanelShow: false
   },
 
   /**
@@ -22,6 +24,18 @@ Page({
     this.getMovieList(inTheaterUrl, "intheaters");
     this.getMovieList(comingSoon, "comingsoon");
     this.getMovieList(top250, "top250");
+  },
+  onGoMore: function (event) {
+    var tit = event.currentTarget.dataset.more;
+    wx.navigateTo({
+      url: 'more-movies/more-movies?tit=' + tit
+    });
+  },
+  toMovieDetail: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: 'movie-detail/movie-detail?id=' + movieId
+    });
   },
   // 获取数据公共方法
   getMovieList: function (url, setedkey) {
@@ -42,6 +56,7 @@ Page({
     })
   },
 
+  // 数据处理
   processDoubanData: function (doubanMovie, tit, setedkey) {
     var movies = [];
     for (var index in doubanMovie.subjects) {
@@ -50,6 +65,7 @@ Page({
       if (title.length >= 6) {
         title = title.substring(0, 6) + '...'
       }
+
       var temp = {
         stars: utils.coverTostarArray(subject.rating.stars),
         title: title,
@@ -65,6 +81,19 @@ Page({
       movies: movies
     };
     this.setData(readData);
+  },
+
+  onBindFocus: function (event) {
+    this.setData({
+      containerShow: false,
+      searchPanelShow: true
+    });
+  },
+  onCancelSearchPanel: function (event) {
+    this.setData({
+      containerShow: true,
+      searchPanelShow: false
+    });
   },
 
   /**

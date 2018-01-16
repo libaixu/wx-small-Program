@@ -1,2 +1,11 @@
-<!--pages/movies/movie-group/movie-group.wxml-->
-<text>pages/movies/movie-group/movie-group.wxml</text>
+<import src='../movie/movie.wxml' />
+
+<template name="movie-group">
+  <view class='movie-group-wrap'>
+    <block wx:for="{{movies}}" wx:for-item="item">
+      <view class='movieTemplate-wrap'>
+        <template is='movieTemplate' data="{{...item}}" />
+      </view>
+    </block>
+  </view>
+</template>

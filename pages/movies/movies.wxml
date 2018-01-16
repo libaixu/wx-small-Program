@@ -1,7 +1,13 @@
 <!--pages/movies/movie.wxml-->
 <import src="movie-list/movie-list.wxml" />
+<import src="movie-group/movie-group.wxml" />
 
-<view class='container'>
+<view class='search'>
+  <icon type='search' class='search-image' size='13' color='#405f80'></icon>
+  <input type='text' placeholder='请输入电影名或演员名' placeholder-class='placeholder' bindfocus='onBindFocus' bindconfirm='onBindConfirm'></input>
+  <icon class='clear-image' type='clear' size='20' color='#d1d1d1' wx:if="{{searchPanelShow}}" catchtap='onCancelSearchPanel'></icon>
+</view>
+<view class='container' wx:if="{{containerShow}}">
   <view class='movies-template'>
     <template is="movieList" data="{{...intheaters}}" />
   </view>
@@ -11,4 +17,8 @@
   <view class='movies-template'>
     <template is="movieList" data="{{...top250}}" />
   </view>
+</view>
+
+<view class='search-panel' wx:if="{{searchPanelShow}}">
+  <template is='movie-group' />
 </view>

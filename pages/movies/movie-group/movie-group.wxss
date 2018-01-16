@@ -1,1 +1,10 @@
-/* pages/movies/movie-group/movie-group.wxss */
+@import "../movie/movie.wxss";
+
+.movie-group-wrap {
+  margin: 20rpx 0 20rpx 9rpx;
+}
+
+.movieTemplate-wrap {
+  margin-bottom: 20rpx;
+  float: left;
+}
