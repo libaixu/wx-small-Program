@@ -10,7 +10,27 @@ function coverTostarArray(stars) {
   }
   return arr;
 }
-function http(url,callback) {
+function coverToCastInfo(casts) {
+  var castArray = [];
+  for (var index in casts) {
+    var cast = {
+      image: casts[index].avatars ? casts[index].avatars.large : '',
+      name: casts[index].name
+    }
+    castArray.push(cast);
+  }
+  return castArray;
+}
+
+function coverToCastString(casts) {
+  var castjoin = '';
+  for (var index in casts) {
+    castjoin = castjoin + casts[index].name + '/';
+  }
+  // return castjoin;
+  return castjoin.substring(0, castjoin.length - 1);
+}
+function http(url, callback) {
   wx.request({
     url: url,
     method: 'GET',
@@ -28,5 +48,7 @@ function http(url,callback) {
 
 module.exports = {
   coverTostarArray: coverTostarArray,
-  http: http
+  http: http,
+  coverToCastInfo: coverToCastInfo,
+  coverToCastString: coverToCastString
 }

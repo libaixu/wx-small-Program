@@ -38,6 +38,12 @@ Page({
 
     utils.http(dataUrl, this.processDoubanData);
   },
+  toMovieDetail: function (event) {
+    var movieId = event.currentTarget.dataset.movieid;
+    wx.navigateTo({
+      url: '../movie-detail/movie-detail?id=' + movieId
+    });
+  },
 
   // 数据处理
   processDoubanData: function (doubanMovie) {
@@ -113,6 +119,7 @@ Page({
 
     this.data.movies = {}
     this.data.isEmpty = true;
+    this.data.totalCount = 0;
     utils.http(refreshUrl, this.processDoubanData);
     wx.showNavigationBarLoading();
   },

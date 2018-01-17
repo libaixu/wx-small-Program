@@ -20,5 +20,5 @@
 </view>
 
 <view class='search-panel' wx:if="{{searchPanelShow}}">
-  <template is='movie-group' />
+  <template is='movie-group'  data='{{...searchResult}}'/>
 </view>

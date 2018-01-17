@@ -9,6 +9,7 @@ Page({
     intheaters: {},
     comingsoon: {},
     top250: {},
+    searchResult: {},
     containerShow: true,
     searchPanelShow: false
   },
@@ -79,7 +80,7 @@ Page({
     readData[setedkey] = {
       tit: tit,
       movies: movies
-    };
+    }
     this.setData(readData);
   },
 
@@ -92,8 +93,14 @@ Page({
   onCancelSearchPanel: function (event) {
     this.setData({
       containerShow: true,
-      searchPanelShow: false
+      searchPanelShow: false,
+      searchResult: {}
     });
+  },
+  onBindConfirm: function (event) {
+    var text = event.detail.value;
+    var searchUrl = app.globalData.goubanBase + '/v2/movie/search?q=' + text;
+    this.getMovieList(searchUrl, 'searchResult');
   },
 
   /**
