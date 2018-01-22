@@ -22,9 +22,9 @@ Page({
     var comingSoon = app.globalData.goubanBase + '/v2/movie/coming_soon' + '?start=0&count=3';
     var top250 = app.globalData.goubanBase + '/v2/movie/top250' + '?start=0&count=3';
 
-    this.getMovieList(inTheaterUrl, "intheaters");
-    this.getMovieList(comingSoon, "comingsoon");
-    this.getMovieList(top250, "top250");
+    this.getMovieList(inTheaterUrl, "正在上映的电影-北京", "intheaters");
+    this.getMovieList(comingSoon, "即将上映的电影", "comingsoon");
+    this.getMovieList(top250, "豆瓣电影Top250", "top250");
   },
   onGoMore: function (event) {
     var tit = event.currentTarget.dataset.more;
@@ -39,7 +39,7 @@ Page({
     });
   },
   // 获取数据公共方法
-  getMovieList: function (url, setedkey) {
+  getMovieList: function (url, tit, setedkey) {
     var that = this;
     wx.request({
       url: url,
@@ -48,7 +48,6 @@ Page({
         'Content-type': 'json'
       },
       success: function (res) {
-        var tit = res.data.title;
         that.processDoubanData(res.data, tit, setedkey);
       },
       fail: function (error) {
